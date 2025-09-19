@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Calculator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    .box { width: 300px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+    input, select, button { margin: 5px 0; padding: 5px; width: 100%; }
+    #result { margin-top: 10px; font-weight: bold; color: green; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Basic Calculator</h2>
+    <label>Number 1:</label>
+    <input type="number" id="num1">
+    
+    <label>Number 2:</label>
+    <input type="number" id="num2">
+    
+    <label>Operation:</label>
+    <select id="operation">
+      <option value="+">Addition (+)</option>
+      <option value="-">Subtraction (-)</option>
+      <option value="*">Multiplication (*)</option>
+      <option value="/">Division (/)</option>
+    </select>
+    
+    <button onclick="calculate()">Calculate</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculate() {
+      let n1 = parseFloat(document.getElementById("num1").value) || 0;
+      let n2 = parseFloat(document.getElementById("num2").value) || 0;
+      let op = document.getElementById("operation").value;
+      let result = "";
+
+      switch(op) {
+        case '+': result = n1 + n2; break;
+        case '-': result = n1 - n2; break;
+        case '*': result = n1 * n2; break;
+        case '/': result = n2 !== 0 ? (n1 / n2) : "Error (divide by 0)"; break;
+      }
+      document.getElementById("result").innerHTML = "Result: " + result;
+    }
+  </script>
+</body>
+</html>
